@@ -1,27 +1,80 @@
-# HelloWorldDashboard
+# Logs Dashboard Angular App
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.5.
+This is an Angular application for logs dashboard. It provides a user-friendly interface to visualize logs and perform various operations related to them.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [License](#license)
+- [Acknowledgments](#acknowledgments)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Dashboard View:** Provides a quick overview of logs with visualizations.
+- **Log Listing:** Allows users to view logs with details such as timestamp, user ID, status, and more.
+- **Date Range Selection:** Enables users to select a custom date range for log retrieval.
+- **Expandable Logs:** Users can expand individual logs to view request, response, and error details.
+- **Graphical Representation:** Presents log data in graphical format for better insights.
+- **Metric Counts:** Displays counts of various metrics like total users, API calls, and failed API calls.
 
-## Build
+## Installation
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Clone the repository to your local machine.
 
-## Running unit tests
+```bash
+git clone https://github.com/your-username/angular-logs-dashboard.git
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+2. Navigate to the project directory.
 
-## Running end-to-end tests
+```bash
+cd angular-logs-dashboard
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+3. Install dependencies.
 
-## Further help
+```bash
+npm install
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Usage
+
+1. Start the Angular application.
+
+```bash
+ng serve
+```
+
+2. Open your browser and go to `http://localhost:4200` to access the Logs Dashboard.
+
+## Configuration
+
+The application connects to a backend server for log data. Make sure to configure the API endpoint in the `DataService` located at `src/app/data.service.ts`.
+
+```typescript
+ApiUrl = "http://localhost:3000/api/analytics";
+```
+
+## Tests
+This project includes unit and integration tests. To run the tests:
+
+```bash
+npm test
+```
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- [Angular](https://angular.io/)
+- [ng-zorro-antd](https://ng.ant.design/)
+- [date-fns](https://date-fns.org/)
+- [ngx-charts](https://swimlane.gitbook.io/ngx-charts/)
+- [FontAwesome](https://fontawesome.com/)
+
+---
