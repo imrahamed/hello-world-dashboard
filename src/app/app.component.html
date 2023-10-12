@@ -1,0 +1,39 @@
+<!-- Main layout -->
+<nz-layout>
+  <!-- Sidebar component -->
+  <nz-sider nzCollapsible [nzCollapsed]="true" nzWidth="200px">
+    <!-- Logo placeholder -->
+    <div class="logo"></div>
+
+    <!-- Navigation menu -->
+    <ul nz-menu nzTheme="dark" nzMode="inline">
+      <li nzSelected routerLink="/dashboard" routerLinkActive="active" nz-menu-item>
+        <span nz-icon nzType="pie-chart"></span>
+        <span>Dashboard</span>
+      </li>
+
+      <li routerLink="/logs" routerLinkActive="active" nz-menu-item>
+        <span nz-icon nzType="desktop"></span>
+        <span>Logs</span>
+      </li>
+    </ul>
+  </nz-sider>
+
+  <!-- Main content layout -->
+  <nz-layout>
+    <!-- Header component -->
+    <nz-header>
+      <div class="header">
+        <span nz-icon nzType="compass" nzTheme="outline"></span>
+        Logs Dashboard
+      </div>
+    </nz-header>
+
+    <!-- Content area for dynamic component loading -->
+    <nz-content>
+      <router-outlet></router-outlet>
+    </nz-content>
+
+    <nz-footer> Created By Imran </nz-footer>
+  </nz-layout>
+</nz-layout>

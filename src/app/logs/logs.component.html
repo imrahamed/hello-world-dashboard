@@ -1,0 +1,111 @@
+<div>
+  <nz-range-picker
+    class="date-picker"
+    [nzRanges]="ranges"
+    nzShowTime
+    nzFormat="yyyy/MM/dd HH:mm:ss"
+    ngModel
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="nzDefaultOpenValue"
+  ></nz-range-picker>
+</div>
+<nz-table
+  #nzTable
+  nzShowPagination
+  nzShowSizeChanger
+  [nzData]="listOfData"
+  [nzPageSize]="50"
+  [nzScroll]="{ y: '65vh', x: 'hidden' }"
+  [nzFrontPagination]="false"
+  [nzLoading]="loading"
+  [nzTotal]="total"
+  [nzPageSize]="pageSize"
+  [nzPageIndex]="page"
+  (nzQueryParams)="onQueryParamsChange($event)"
+>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Status</th>
+      <th>Time</th>
+      <th nzWidth="60px"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let data of nzTable.data">
+      <tr>
+        <td>{{ data.userId }}</td>
+        <td>{{ data.status }}</td>
+        <td>{{ formatDate(data.timestamp) }}</td>
+        <td
+          [nzExpand]="expandSet.has(data._id)"
+          (nzExpandChange)="onExpandChange(data._id, $event)"
+        >
+    </td>
+      </tr>
+      <tr [nzExpand]="expandSet.has(data._id)">
+        <span>
+          <div
+            *ngIf="data.request"
+            nz-row
+            [nzGutter]="{ xs: 8, sm: 16, md: 24, lg: 32 }"
+          >
+            <div
+              nz-col
+              class="gutter-row"
+              nzXs="20"
+              nzSm="16"
+              nzMd="12"
+              [nzSpan]="8"
+            >
+              <div class="inner-box">
+                <div><b>Request</b></div>
+                <div class="code-block">
+                  <code>
+                    {{ showCode(data.request) }}
+                  </code>
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf="data.response"
+              nz-col
+              class="gutter-row"
+              nzXs="20"
+              nzSm="16"
+              nzMd="12"
+              [nzSpan]="8"
+            >
+              <div class="inner-box">
+                <div><b>Response</b></div>
+                <div class="code-block">
+                  <code>
+                    {{ showCode(data.response) }}
+                  </code>
+                </div>
+              </div>
+            </div>
+            <div
+              *ngIf="data.error"
+              nz-col
+              class="gutter-row"
+              nzXs="20"
+              nzSm="16"
+              nzMd="12"
+              [nzSpan]="8"
+            >
+              <div class="inner-box">
+                <div><b>Error</b></div>
+                <div class="code-block">
+                  <code>
+                    {{ showCode(data.error) }}
+                  </code>
+                </div>
+              </div>
+            </div>
+          </div>
+        </span>
+      </tr>
+    </ng-container>
+  </tbody>
+</nz-table>

@@ -1,0 +1,44 @@
+<div>
+  <!-- <nz-range-picker [nzRanges]="ranges" ngModel (ngModelChange)="onChange($event)"></nz-range-picker>
+    <br /> -->
+  <nz-range-picker
+    class="date-picker"
+    [nzRanges]="ranges"
+    nzShowTime
+    nzFormat="yyyy/MM/dd HH:mm:ss"
+    ngModel
+    (ngModelChange)="onChange($event)"
+    [(ngModel)]="nzDefaultOpenValue"
+  ></nz-range-picker>
+</div>
+<div #containerRef>
+  <div class="counts">
+    <ngx-charts-number-card
+      [scheme]="colorScheme"
+      [results]="counts"
+      [cardColor]="cardColor"
+      [view]="[containerRef.offsetWidth, 270]"
+    >
+    </ngx-charts-number-card>
+  </div>
+
+  <div>
+    <ngx-charts-line-chart
+      [view]="[containerRef.offsetWidth, height]"
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="graphData"
+      (window:resize)="onResize($event)"
+      [autoScale]="true"
+      [curve]="curve"
+    >
+    </ngx-charts-line-chart>
+  </div>
+</div>
